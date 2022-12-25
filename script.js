@@ -34,6 +34,10 @@ DomElement.prototype.taskOne = function () {
     document.body.append(newEl)
 }
 
+DomElement.prototype.taskTwo = function () {
+
+}
+
 const test = new DomElement('#header', '100px', '200px', 'green', '14px')
 const test1 = new DomElement('.footer', '150px', '100px', 'blue', '10px')
 
