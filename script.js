@@ -8,7 +8,7 @@ const DomElement = function (selector, height, width, bg, fontSize) {
     this.fontSize = fontSize
 }
 
-DomElement.prototype.createEl = function () {
+DomElement.prototype.taskOne = function () {
     let newEl
 
     switch (this.selector[0]) {
@@ -37,5 +37,5 @@ DomElement.prototype.createEl = function () {
 const test = new DomElement('#header', '100px', '200px', 'green', '14px')
 const test1 = new DomElement('.footer', '150px', '100px', 'blue', '10px')
 
-test.createEl()
-test1.createEl()
+test.taskOne()
+test1.taskOne()
