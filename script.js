@@ -9,37 +9,33 @@ const DomElement = function (selector, height, width, bg, fontSize) {
 }
 
 DomElement.prototype.createEl = function () {
+    let newEl
+
     switch (this.selector[0]) {
         case '#':
-            const p = document.createElement('p')
-            p.id = this.selector.slice(1)
-            p.style.cssText =
-                `height: ${this.height}; width: ${this.width};
-                background: ${this.bg}; font-size: ${this.fontSize}`
-            p.textContent =
-                `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Laboriosam, at beatae! Accusantium eligendi at id!`
-            document.body.append(p)
+            newEl = document.createElement('p')
+            newEl.id = this.selector.slice(1)
             break;
 
         case '.':
-            const div = document.createElement('div')
-            div.classList.add(this.selector.slice(1))
-            div.style.cssText =
-                `height: ${this.height}; width: ${this.width};
-                background: ${this.bg}; font-size: ${this.fontSize}`
-            div.textContent =
-                `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Laboriosam, at beatae! Accusantium eligendi at id!`
-            document.body.append(div)
+            newEl = document.createElement('div')
+            newEl.classList.add(this.selector.slice(1))
             break;
 
         default:
-            break;
+            return
     }
+    newEl.style.cssText = `height: ${this.height}; width: ${this.width};
+        background: ${this.bg}; font-size: ${this.fontSize}`
 
+    newEl.textContent = `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Laboriosam, at beatae! Accusantium eligendi at id!`
+
+    document.body.append(newEl)
 }
 
-const test = new DomElement('#new_class', '100px', '200px', 'green', '18')
+const test = new DomElement('#header', '100px', '200px', 'green', '14px')
+const test1 = new DomElement('.footer', '150px', '100px', 'blue', '10px')
 
 test.createEl()
+test1.createEl()
