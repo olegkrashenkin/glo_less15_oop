@@ -54,8 +54,6 @@ DomElement.prototype.taskTwo = function () {
             case 'ArrowUp':
                 top -= 10
                 break;
-            default:
-                break;
         }
 
         newEl.style.left = `${left}px`
