@@ -36,10 +36,10 @@ DomElement.prototype.taskOne = function () {
 DomElement.prototype.taskTwo = function () {
     let left = 0
     let top = 0
-    let newEl = document.createElement('div')
+    let newElem = document.createElement('div')
 
     const drawSquare = function (direction) {
-        newEl = document.querySelector('.square')
+        newElem = document.querySelector('.square')
 
         switch (direction) {
             case 'ArrowRight':
@@ -56,23 +56,22 @@ DomElement.prototype.taskTwo = function () {
                 break;
         }
 
-        newEl.style.left = `${left}px`
-        newEl.style.top = `${top}px`
+        newElem.style.left = `${left}px`
+        newElem.style.top = `${top}px`
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        newEl.classList.add('square')
-        newEl.style.cssText =
+        newElem.classList.add('square')
+        newElem.style.cssText =
             `height: ${this.height}; width: ${this.width};
         background: ${this.bg}; position: absolute; left: ${left}px; top: ${top}px`
-        document.body.append(newEl)
+        document.body.append(newElem)
     })
 
     document.body.addEventListener('keydown', (event) => {
         drawSquare(event.code)
     })
 }
-
 
 const test = new DomElement('#header', '100px', '200px', 'green', '14px')
 const test1 = new DomElement('.footer', '100px', '100px', 'blue', '10px')
