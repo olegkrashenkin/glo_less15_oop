@@ -16,15 +16,14 @@ DomElement.prototype.taskOne = function () {
             newEl = document.createElement('p')
             newEl.id = this.selector.slice(1)
             break;
-
         case '.':
             newEl = document.createElement('div')
             newEl.classList.add(this.selector.slice(1))
             break;
-
         default:
             return
     }
+
     newEl.style.cssText = `height: ${this.height}; width: ${this.width};
         background: ${this.bg}; font-size: ${this.fontSize}`
 
@@ -35,11 +34,52 @@ DomElement.prototype.taskOne = function () {
 }
 
 DomElement.prototype.taskTwo = function () {
+    let left = 0
+    let top = 0
+    let newEl = document.createElement('div')
 
+    const drawSquare = function (direction) {
+        newEl = document.querySelector('.square')
+
+        switch (direction) {
+            case 'ArrowRight':
+                left += 10
+                break;
+            case 'ArrowDown':
+                top += 10
+                break;
+            case 'ArrowLeft':
+                left -= 10
+                break;
+            case 'ArrowUp':
+                top -= 10
+                break;
+            default:
+                break;
+        }
+
+        newEl.style.left = `${left}px`
+        newEl.style.top = `${top}px`
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        newEl.classList.add('square')
+        newEl.style.cssText =
+            `height: ${this.height}; width: ${this.width};
+        background: ${this.bg}; position: absolute; left: ${left}px; top: ${top}px`
+        document.body.append(newEl)
+    })
+
+    document.body.addEventListener('keydown', (event) => {
+        drawSquare(event.code)
+    })
 }
 
+
 const test = new DomElement('#header', '100px', '200px', 'green', '14px')
-const test1 = new DomElement('.footer', '150px', '100px', 'blue', '10px')
+const test1 = new DomElement('.footer', '100px', '100px', 'blue', '10px')
 
 test.taskOne()
 test1.taskOne()
+test1.bg = 'red'
+test1.taskTwo()
